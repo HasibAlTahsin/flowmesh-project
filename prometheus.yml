@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 15s  # মেট্রিক্স এক্সপোজ করতে 15 সেকেন্ডে একবার স্ক্রেপ হবে
+
+scrape_configs:
+  - job_name: 'user-service'
+    static_configs:
+      - targets: ['user-service:3000']  # user-service এ পোর্ট 3000 তে রিকোয়েস্ট পাঠাবে
+
+  - job_name: 'product-service'
+    static_configs:
+      - targets: ['product-service:3001']  # product-service এ পোর্ট 3001 তে রিকোয়েস্ট পাঠাবে
+
+  - job_name: 'order-service'
+    static_configs:
+      - targets: ['order-service:3002']  # order-service এ পোর্ট 3002 তে রিকোয়েস্ট পাঠাবে
+
+  - job_name: 'payment-service'
+    static_configs:
+      - targets: ['payment-service:3003']  # payment-service এ পোর্ট 3003 তে রিকোয়েস্ট পাঠাবে
+
+  - job_name: 'inventory-service'
+    static_configs:
+      - targets: ['inventory-service:3004']  # inventory-service এ পোর্ট 3004 তে রিকোয়েস্ট পাঠাবে
+
+  - job_name: 'notification-service'
+    static_configs:
+      - targets: ['notification-service:3005']  # notification-service এ পোর্ট 3005 তে রিকোয়েস্ট পাঠাবে

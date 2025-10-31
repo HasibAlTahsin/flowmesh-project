@@ -1,0 +1,60 @@
+services:
+  # User Service
+  user-service:
+    build: ./user-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  # Product Service
+  product-service:
+    build: ./product-service
+    ports:
+      - "3006:3001"  # পোর্ট পরিবর্তন করা হয়েছে
+    depends_on:
+      - mongo
+
+  # Order Service
+  order-service:
+    build: ./order-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongo
+
+  # Payment Service
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "3003:3003"
+    depends_on:
+      - mongo
+
+  # Inventory Service
+  inventory-service:
+    build: ./inventory-service
+    ports:
+      - "3004:3004"
+    depends_on:
+      - mongo
+
+  # Notification Service
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "3005:3005"
+    depends_on:
+      - mongo
+
+  # MongoDB
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27018:27017"  # MongoDB এর পোর্ট পরিবর্তন
+    volumes:
+      - mongo-data:/data/db  # MongoDB ডেটার জন্য ভলিউম
+
+volumes:
+  mongo-data:
+    driver: local
