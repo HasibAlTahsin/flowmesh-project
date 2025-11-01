@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Usage Dashboard</title>
+</head>
+<body>
+    <h1>FlowMesh Dashboard</h1>
+    <div id="graph"></div>  <!-- এখানে গ্রাফ রেন্ডার হবে -->
+
+    <script>
+        // ডাটা লোড করার জন্য Flask API কল
+        fetch('/data')
+        .then(response => response.json())
+        .then(data => {
+            // গ্রাফের HTML যোগ করা
+            document.getElementById('graph').innerHTML = data.graph;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
